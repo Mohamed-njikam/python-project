@@ -16,10 +16,9 @@ while True:
 
     english_alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
                         't',
-                        'u', 'v', 'w', 'x', 'y', 'z'}
+                        'u', 'v', 'w', 'x', 'y', 'z', 'L', 'HP'}
 
-    word_list = ['tout', 'ici', 'rien', 'peu', 'chose', 'autre', 'temps', 'vie', 'accord ', 'monde', 'homme', 'veut',
-                 'quelque', 'besoin', 'femme', 'mais', 'comme', 'avant', 'aussi']
+    word_list = ['hello', 'because', 'with', 'together', 'computer', 'javascript', 'python', 'java']
 
     hidden_word = random.choice(word_list)
 
@@ -40,6 +39,15 @@ while True:
             print(f"\n{hidden_word_hyphen_string}")
             letter = input("Input a letter: ")
             letter_length = len(letter)
+            
+            if letter.upper() == "HP":
+                if lifes < 2:
+                    print(f"You have {lifes} life left")
+                else:
+                    print(f"You have {lifes} lives left")
+
+            elif letter == "L":
+                lifes += 800
 
             if letter_length > 1:
                 print("You should input a single letter")
