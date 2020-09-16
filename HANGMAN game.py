@@ -9,6 +9,7 @@ print("H A N G M A N ")
 while True:
 
     import random
+    import re
 
     # Variables for the game
 
@@ -18,7 +19,7 @@ while True:
                         't',
                         'u', 'v', 'w', 'x', 'y', 'z', 'L', 'HP'}
 
-    word_list = ['hello', 'because', 'with', 'together', 'computer', 'javascript', 'python', 'java']
+    word_list = ['hello', 'because', 'with', 'together', 'computer', 'javascript', 'python', 'java', 'computer']
 
     hidden_word = random.choice(word_list)
 
@@ -60,8 +61,9 @@ while True:
 
             elif letter in hidden_word_class and letter not in hidden_word_hyphen_string and letter not in used_letters:
                 used_letters.add(letter)
-                hidden_word_hyphen_list[hidden_word.index(letter)] = letter
-                hidden_word_hyphen_list[hidden_word.rfind(letter)] = letter
+                letter_positions = [l.start() for l in re.finditer(letter, hidden_word)]
+                for le in letter_positions:
+                    hidden_word_hyphen_list[le] = letter
                 hidden_word_hyphen_string = "".join(hidden_word_hyphen_list)
 
                 if hidden_word_hyphen_string == hidden_word:
